@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List with MISB 6</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <h1>Todo List MSIB 6</h1>
+    <div class="input-container">
+      <input v-model="newTask" type="text" placeholder="Tambahkan Kegiatan...">
+      <button @click="addTask">Tambah</button>
+    </div>
+    <div class="filters">
+      <button class= "button-showall" @click="setFilter('all')">Semua</button>
+      <button class= "button-showcomplate"  @click="setFilter('completed')">Selesai</button>
+      <button class= "button-showpanding" @click="setFilter('pending')">Tunda</button>
+    </div>
+    <ul>
+      <li v-for="(task, index) in filteredTasks" :key="index">
+        <input type="checkbox" @change="toggleStatus(index)" :checked="task.completed">
+        <span :class="{ completed: task.completed }">{{ task.name }}</span>
+        <button class= "button-remove" @click="removeTask(index)">Hapus</button>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

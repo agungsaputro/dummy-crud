@@ -1,0 +1,4 @@
+crud/node_modules
+crud/.env
+crud/dockerfile
+crud/docker-compose.yml
